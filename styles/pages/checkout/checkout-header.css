@@ -3,17 +3,48 @@
   padding-left: 30px;
   padding-right: 30px;
   background-color: white;
-
   display: flex;
   justify-content: center;
-
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
 }
-
+@media (max-width: 800px) {
+  .small-site-logo{
+   display: block;
+  }
+}
+.small-site-logo{
+  display: none;
+  position: relative;
+}
+.small-site-logo .site-text{
+  position: absolute;
+  left: 1px;
+  top: 4px;
+  color: #0010f1;
+}
+.small-site-logo .logo-text{
+  position: absolute;
+  top: 22px;
+  color: #686565;
+  left: 14px;
+  font-size: 18px;
+}
+a span{
+  position: absolute;
+  top: -4px;
+  color: #0e24c8;
+  font-size: 25px;
+}
+.site-text{
+  color: #cdaeae;
+  top: 20px;
+  left: 80px;
+  font-size: 18px;
+}
 .header-content {
   width: 100%;
   max-width: 1100px;

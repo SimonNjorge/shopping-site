@@ -51,6 +51,9 @@
   .products-grid {
     grid-template-columns: repeat(3, 1fr);
   }
+  .small-site-logo{
+   display: block;
+  }
 }
 
 @media (max-width: 575px) {
@@ -71,8 +74,8 @@
   padding-left: 25px;
   padding-right: 25px;
 
-  border-right: 1px solid rgb(231, 231, 231);
-  border-bottom: 1px solid rgb(231, 231, 231);
+  border-right: 1px solid rgb(197, 196, 196);
+  border-bottom: 1px solid rgb(197, 196, 196);
 
   display: flex;
   flex-direction: column;
@@ -98,6 +101,12 @@
 .product-name {
   height: 40px;
   margin-bottom: 5px;
+  background-color: rgb(8, 109, 251);
+  padding-left: 6px;
+  padding-right: 6px;
+  padding-top: 3px;
+  color: wheat ;
+  border-radius: 4px;
 }
 
 .product-rating-container {
@@ -112,7 +121,7 @@
 }
 
 .product-rating-count {
-  color: rgb(1, 124, 182);
+  color: rgb(47, 232, 1);
   cursor: pointer;
   margin-top: 3px;
 }
@@ -137,10 +146,6 @@
   display: flex;
   align-items: center;
   margin-bottom: 8px;
-
-  /* At first, the "Added to cart" message will
-     be invisible. Use JavaScript to change the
-     opacity and make it visible. */
   opacity: 0;
 }
 
