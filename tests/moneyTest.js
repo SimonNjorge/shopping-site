@@ -8,7 +8,8 @@ if (formatCurrency(2095) === '20.95'){
     console.log('failed')
 }
 
-console.log('works with 0')
+console.log('works with 0');
+
 if (formatCurrency(0) === '0.00'){
     console.log('passed')
 } else {
