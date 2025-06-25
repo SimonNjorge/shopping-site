@@ -1,12 +1,16 @@
 
 class Cart  {
+    //# makes this property private and it
+    //can only be  accessed and modified inside the
+    //class
+    #localStorageKey
     constructor(localStorageKey){
-        this.localStorageKey = localStorageKey;
-        this.loadFromStorage();
+        this.#localStorageKey = localStorageKey;
+        this.#loadFromStorage();
     }
 
-    loadFromStorage () {
-    this.cartItems = JSON.parse(localStorage.getItem(this.localStorageKey)) || 
+    #loadFromStorage () {
+    this.cartItems = JSON.parse(localStorage.getItem(this.#localStorageKey)) || 
         [{
             productId: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
             quantity: 2,
@@ -18,7 +22,7 @@ class Cart  {
          }];
    }
     saveToStorage () {
-        localStorage.setItem(this.localStorageKey, JSON.stringify(this.cartItems));
+        localStorage.setItem(this.#localStorageKey, JSON.stringify(this.cartItems));
     }
     calculateCartQuantity () {
         let cartQuantity = 0;
@@ -85,6 +89,6 @@ cart.addToCart("54e0eccd-8f36-462b-b68a-8182611d9add");
 cart.addToCart("e43638ce-6aa0-4b85-b27f-e1d07eb678c6");
 
 console.log(cart);
-console.log(businessCart);
+console.log(businessCart.localStorageKey);
 
 console.log(businessCart instanceof Cart)
