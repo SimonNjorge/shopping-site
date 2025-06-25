@@ -135,18 +135,24 @@ a span{
   display: flex;
   justify-content: end;
 }
-
+/*
+.returns-orders-sec:hover{
+  border: 1px solid white;
+  width: 50px;
+}
+  */
+.cart-sec:hover{
+  border: 1px solid white;
+}
 .orders-link {
   color: white;
 }
-
 .returns-text {
   display: block;
   top: 4px;
   left: -65px;
   font-size: 13px;
 }
-
 .orders-text {
   display: block;
   font-size: 15px;
@@ -163,13 +169,11 @@ a span{
 .cart-icon {
   width: 50px;
 }
-
 .cart-text {
   margin-top: 12px;
   font-size: 15px;
   font-weight: 700;
 }
-
 .cart-quantity {
   color: rgb(82, 239, 215);
   font-size: 16px;
