@@ -1,33 +1,24 @@
-import { formatCurrency } from "../../javascript/utils/money.js";
+import { formatCurrency } from "../../scripts/utils/money.js";
 
-console.log('test suite: formatCurrency')
-console.log('converts cents to dollars')
-if (formatCurrency(2095) === '20.95'){
-    console.log('passed')
-} else {
-    console.log('failed')
-}
+describe('test suite: formatCurrency', () => {
+    it('converts cents to dollars', () => {
+        // a call to expect returns an object that has
+        //several methods to compare values,
+        //one of these methods is toEqual
+        expect(formatCurrency(2095)).toEqual('20.95')
+    })
 
-console.log('works with 0');
+    it('works with zero', () => {
+        expect(formatCurrency(0)).toEqual('0.00')
+    });
 
-if (formatCurrency(0) === '0.00'){
-    console.log('passed')
-} else {
-    console.log('failed')
-}
+    describe('rounding', () => {
+         it('rounds up to the nearest cents', () => {
+            expect(formatCurrency(2000.5)).toEqual('20.01')
+        });
 
-console.log('rounds up to the nearest cents')
-if (formatCurrency(2000.5) === '20.01'){
-    console.log('passed')
-} else {
-    console.log(Math.round(2000.5).toFixed(2))
-    console.log('failed')
-}
-
-console.log('rounds down to the nearest cents')
-if (formatCurrency(2000.4) === '20.00'){
-    console.log('passed')
-} else {
-    console.log(Math.round(2000.5).toFixed(2))
-    console.log('failed')
-}
+        it('rounds down to the nearest cents', () => {
+            expect(formatCurrency(2000.4)).toEqual('20.00')
+        });
+    });
+})
