@@ -1,9 +1,15 @@
 import { addToCart, cart, loadFromStorage, updateDeliveryOption } from "../../data/cart.js";
 
 describe('test suite: addToCart', () => {
-    it('adds an existing product to the cart', () => {
+    beforeEach(() => {
+         //the code below mocks the setitem method so that any action 
+        //performed on the setitem method  in the test code will not 
+        //affect the real code. here it prevents the addtocart function
+        //from saving the fake cart using its savetostorage F call
         spyOn(localStorage, 'setItem');
+    });
 
+    it('adds an existing product to the cart', () => {
          spyOn(localStorage, 'getItem').and.callFake(() => {
                 return JSON.stringify([{
                     productId: '6e43638ce-6aa0-4b85-b27f-e1d07eb678c',
@@ -27,12 +33,6 @@ describe('test suite: addToCart', () => {
         //and replace the getitem method with a fake version to 
         //simulate an  empty cart
 
-        //the code below mocks the setitem method so that any action 
-        //performed on the setitem method  in the test code will not 
-        //affect the real code. here it prevents the addtocart function
-        //from saving the fake cart using its savetostorage F call
-        spyOn(localStorage, 'setItem')
-
         //the code below overwrites the original getitem with whatever
         //that is returnd by the outcome of spyon
         spyOn(localStorage, 'getItem').and.callFake(() => {
@@ -47,6 +47,9 @@ describe('test suite: addToCart', () => {
 
         //only works if the method in question has been mocked
         //using spyon
+        expect(localStorage.setItem).toHaveBeenCalledWith('cart', JSON.stringify([{productId: '6e43638ce-6aa0-4b85-b27f-e1d07eb678c',
+            quantity: 1,
+            deliveryOptionId: '1'}]));
         expect(localStorage.setItem).toHaveBeenCalledTimes(1);
         expect(cart[0].productId).toEqual('6e43638ce-6aa0-4b85-b27f-e1d07eb678c');
         console.log(cart)

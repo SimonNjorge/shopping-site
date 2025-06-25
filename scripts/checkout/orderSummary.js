@@ -143,7 +143,7 @@ export function renderOrderSummary () {
             const productId = link.dataset.productId;
             document.querySelector(`.js-cart-item-container-${productId}`)
             .classList.add('is-editing-quantity');
-        // updateCheckoutItems();
+        updateCheckoutItems();
         });
     });
 
