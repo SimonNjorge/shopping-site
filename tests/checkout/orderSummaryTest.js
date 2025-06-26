@@ -4,7 +4,6 @@ import { loadFromStorage, cart } from "../../data/cart.js";
 describe('test suite: renderOrderSummary', () => {
     const productId1 = "e43638ce-6aa0-4b85-b27f-e1d07eb678c6";
     const productId2 = "15b6fc6f-327a-4ec4-896f-486349e85a3d";
-
     //code runs before each test
     beforeEach(() => {
         //we mock localstorage.setitem because the code that runs when .click()
@@ -33,9 +32,9 @@ describe('test suite: renderOrderSummary', () => {
     });
 
     //code runs after each test
-   // afterEach(() => {
-       //    document.querySelector('.js-tests-container').innerHTML = '';
-    //});
+    afterEach(() => {
+        document.querySelector('.js-tests-container').innerHTML = '';
+    });
 
     it('displays the cart', () => {
         expect(
@@ -53,7 +52,10 @@ describe('test suite: renderOrderSummary', () => {
 
     it('removes a product from the  cart', () => {
         //click an element using code
+        console.log(cart, 'rm');
         document.querySelector(`.js-del-link-${productId1}`).click();
+        console.log(cart, 'rm');
+
         expect(
             document.querySelectorAll('.js-cart-item-container').length
         ).toEqual(1);
@@ -71,6 +73,6 @@ describe('test suite: renderOrderSummary', () => {
 
 //code runs after each test
     afterEach(() => {
-        document.querySelector('.js-tests-container').innerHTML = '';
+       // document.querySelector('.js-tests-container').innerHTML = '';
     });
 });
