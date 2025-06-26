@@ -33,9 +33,9 @@ describe('test suite: renderOrderSummary', () => {
     });
 
     //code runs after each test
-    afterEach(() => {
-           document.querySelector('.js-tests-container').innerHTML = '';
-    });
+   // afterEach(() => {
+       //    document.querySelector('.js-tests-container').innerHTML = '';
+    //});
 
     it('displays the cart', () => {
         expect(
@@ -67,5 +67,10 @@ describe('test suite: renderOrderSummary', () => {
         ).not.toEqual(null);
         expect(cart.length).toEqual(1);
         expect(cart[0].productId).toEqual(productId2);
+    });
+
+//code runs after each test
+    afterEach(() => {
+        document.querySelector('.js-tests-container').innerHTML = '';
     });
 });

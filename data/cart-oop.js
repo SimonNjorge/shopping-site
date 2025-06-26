@@ -3,12 +3,11 @@ class Cart  {
     //# makes this property private and it
     //can only be  accessed and modified inside the
     //class
-    #localStorageKey
+    #localStorageKey;
     constructor(localStorageKey){
         this.#localStorageKey = localStorageKey;
         this.#loadFromStorage();
     }
-
     #loadFromStorage () {
     this.cartItems = JSON.parse(localStorage.getItem(this.#localStorageKey)) || 
         [{
@@ -81,14 +80,4 @@ class Cart  {
     }
 }
 
-const cart = new Cart('cart-oop');
-const businessCart = new Cart('cart-business');
-
-businessCart.addToCart("e43638ce-6aa0-4b85-b27f-e1d07eb678c6");
-cart.addToCart("54e0eccd-8f36-462b-b68a-8182611d9add");
-cart.addToCart("e43638ce-6aa0-4b85-b27f-e1d07eb678c6");
-
-console.log(cart);
-console.log(businessCart.localStorageKey);
-
-console.log(businessCart instanceof Cart)
+export const cart = new Cart('cart-oop');
