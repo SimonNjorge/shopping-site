@@ -1,5 +1,5 @@
 import { renderOrderSummary } from "../../scripts/checkout/orderSummary.js";
-import { loadFromStorage, cart } from "../../data/cart.js";
+import { cart } from "../../data/cart-oop.js";
 
 describe('test suite: renderOrderSummary', () => {
     const productId1 = "e43638ce-6aa0-4b85-b27f-e1d07eb678c6";
@@ -27,7 +27,7 @@ describe('test suite: renderOrderSummary', () => {
                 deliveryOptionId: '2'
             }]);
         });
-        loadFromStorage();
+        cart.loadFromStorage();
         renderOrderSummary();
     });
 
@@ -52,9 +52,7 @@ describe('test suite: renderOrderSummary', () => {
 
     it('removes a product from the  cart', () => {
         //click an element using code
-        console.log(cart, 'rm');
         document.querySelector(`.js-del-link-${productId1}`).click();
-        console.log(cart, 'rm');
 
         expect(
             document.querySelectorAll('.js-cart-item-container').length
@@ -67,12 +65,7 @@ describe('test suite: renderOrderSummary', () => {
         expect(
             document.querySelector(`.js-cart-item-container-${productId2}`)
         ).not.toEqual(null);
-        expect(cart.length).toEqual(1);
-        expect(cart[0].productId).toEqual(productId2);
-    });
-
-//code runs after each test
-    afterEach(() => {
-       // document.querySelector('.js-tests-container').innerHTML = '';
+        expect(cart.cartItems.length).toEqual(1);
+        expect(cart.cartItems[0].productId).toEqual(productId2);
     });
 });
