@@ -710,3 +710,25 @@ export const products = [
   }
   return new Product(productDetails);
 });
+
+/*
+const date = new Date();
+console.log(date.toLocaleDateString())
+const object2 = {
+  a: 1,
+  b: '',
+  c (){
+     b = this.a;
+  }
+}
+
+//in a function 'this' is undefined
+function logThis(){
+  console.log(this)
+}
+logThis();
+//we can change what this points 
+// to in a function using the .call()
+//method
+logThis.call('hello');
+*/
