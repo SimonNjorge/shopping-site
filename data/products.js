@@ -56,14 +56,13 @@ export function loadProducts(fun){
           return new Clothing(productDetails);
         }
         return new Product(productDetails);
-      });;
+      });
+      fun();
   })
 
   xhr.open('GET', 'https://supersimplebackend.dev/products');
   xhr.send();
   console.log('load products');
-
-  fun();
 }
 
 /*
