@@ -5,12 +5,16 @@ import { loadProductsFetch } from "../data/products.js";
 //import '../data/backend-practice.js';
 
 //async makes a function return a promise
-async function loadPage(){
-    await loadProductsFetch();
-
+async function loadPage () {
+    try{
+        await loadProductsFetch();
+    } catch (error) {
+        console.log('unexpected error' + error);
+    }
     renderOrderSummary();
     renderPaymentSummary();
 }
+
 loadPage();
 
 /*

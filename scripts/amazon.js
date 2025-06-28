@@ -7,7 +7,7 @@ import { cart } from '../data/cart-oop.js';
 
 loadProductsFetch().then(() => {
   renderProductsGrid();
-})
+});
 
 function renderProductsGrid() {
   let productsHtml = '';
