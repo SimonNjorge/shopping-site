@@ -1,6 +1,6 @@
 import { renderOrderSummary } from "../../scripts/checkout/orderSummary.js";
 import { cart } from "../../data/cart-oop.js";
-import { loadProducts } from "../../data/products.js";
+import { loadProductsFetch } from "../../data/products.js";
 
 describe('test suite: renderOrderSummary', () => {
     const productId1 = "e43638ce-6aa0-4b85-b27f-e1d07eb678c6";
@@ -11,7 +11,7 @@ describe('test suite: renderOrderSummary', () => {
     //done can also be used inside it or beforeEach
     //to wait for asynchronous backend code to finish
     beforeAll((done) => {
-        loadProducts(() => {
+        loadProductsFetch().then(() => {
             done();
         })
     });
