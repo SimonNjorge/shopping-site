@@ -1,14 +1,14 @@
 //import { calculateCartQuantity, cart, addToCart} from "../data/cart.js";
-import { products, loadProductsFetch } from "../data/products.js";
+import { products } from "../data/products.js";
 import { formatCurrency } from "./utils/money.js";
 import { cart } from '../data/cart-oop.js';
 
 //loadProducts(renderProductsGrid);
-
+/*
 loadProductsFetch().then(() => {
   renderProductsGrid();
 });
-
+*/
 function renderProductsGrid() {
   let productsHtml = '';
 
@@ -96,3 +96,4 @@ function renderProductsGrid() {
       });
   });
 }
+renderProductsGrid();

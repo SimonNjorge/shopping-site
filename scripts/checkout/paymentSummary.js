@@ -4,8 +4,18 @@ import { getDeliveryOption } from "../../data/deliveryOptions.js";
 import { formatCurrency } from "../utils/money.js";
 import { cart } from "../../data/cart-oop.js";
 import { addOrder } from "../../data/orders.js";
+import { today } from "../../data/dates.js";
 
-export function renderPaymentSummary() {
+function createOrder (totalCents) {
+  return {
+    id: crypto.randomUUID(),
+    totalCostCents: totalCents,
+    orderItems: cart.cartItems,
+    orderPlacementDate: today
+  }
+}
+
+export function renderPaymentSummary () {
      //first part is saving the data
     let totalQuantity = 0;
     let productsPriceCents = 0;
@@ -73,7 +83,7 @@ export function renderPaymentSummary() {
 
    document.querySelector('.js-payment-summary')
     .innerHTML = paymentSummaryHTML;
-
+/*
    document.querySelector('.js-place-order-btn')
     .addEventListener('click', async () => {
       try {
@@ -85,11 +95,20 @@ export function renderPaymentSummary() {
           body: JSON.stringify(
             {cart: cart.cartItems})
         });
-        const order = await response.json();
+        const order = await response.json() 
+        console.log(order)
         addOrder(order);
       } catch (error) {
         console.log('unexpected error:', error);
       }
+      window.location.href = 'orders.html';
+    });
+    */
+    document.querySelector('.js-place-order-btn')
+    .addEventListener('click', () => {
+      const order =  createOrder(totalCents);
+      console.log(order);
+      addOrder(order);
       window.location.href = 'orders.html';
     });
 }
