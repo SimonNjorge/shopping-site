@@ -5,13 +5,24 @@ import { products, getProduct } from "../data/products.js";
 import { getDeliveryOption } from "../data/deliveryOptions.js";
 //import dayjs from ' https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
 
-function orderPlacementDate() {
-    return today.format('MMMM D')
+function orderPlacementDate () {
+    let date = today.format('MMMM D');
+    localStorage.setItem(
+        'orderPlcmntDate', JSON.stringify(date))
+    return date;
 }
+let orderPlacementDateString = JSON.parse(
+    localStorage.getItem('orderPlcmntDate')) || orderPlacementDate();
+
+let arrivalDateString = JSON.parse(
+    localStorage.getItem('arrivalDate')) || getProductArrivalDate();
 
 export function getProductArrivalDate(deliveryDays){
-    let arrivalDate = today.add(deliveryDays, 'days');
-    return arrivalDate.format('dddd, MMMM D')
+    let date = today.add(deliveryDays, 'days');
+    let arrivalDate = date.format('dddd, MMMM D'); 
+    localStorage.setItem('arrivalDate',
+        JSON.stringify(arrivalDate))
+    return arrivalDate;
 }
 
 function renderOrderProductsDetailsHTML (order) {
@@ -29,7 +40,7 @@ function renderOrderProductsDetailsHTML (order) {
                     ${matchingItem.name}
                 </div>
                 <div class="product-delivery-date">
-                    Arriving on: ${getProductArrivalDate(deliveryOption.deliveryDays)}
+                    Arriving on: ${arrivalDateString}
                 </div>
                 <div class="product-quantity">
                     Quantity: ${orderItem.quantity}
@@ -38,6 +49,10 @@ function renderOrderProductsDetailsHTML (order) {
                     <img class="buy-again-icon" src="images/icons/buy-again.png">
                     <span class="buy-again-message">Buy it again</span>
                 </button>
+                <div class="buy-again-success-msg">
+                    <img src="../images/icons/checkmark.png">
+                    <p>successful added to cart</p>
+                </div>
             </div>
 
             <div class="product-actions">
@@ -61,7 +76,7 @@ function renderOrdersPage(){
                 <div class="order-header-left-section">
                     <div class="order-date">
                         <div class="order-header-label">Order Placed:</div>
-                        <div>${orderPlacementDate()}</div>
+                        <div>${orderPlacementDateString}</div>
                     </div>
                     <div class="order-total">
                         <div class="order-header-label">Total:</div>

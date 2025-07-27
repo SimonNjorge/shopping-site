@@ -15,6 +15,14 @@ function createOrder (totalCents) {
   }
 }
 
+function addItemArrivalDate(order){
+  order.orderItems.forEach(item => {
+    let deliveryOption = getDeliveryOption(item.deliveryOptionId);
+    let deliveryDate = today.add(deliveryOption.deliveryDays, 'days');
+    item.deliveryDate = deliveryDate;
+  })
+}
+
 export function renderPaymentSummary () {
      //first part is saving the data
     let totalQuantity = 0;
@@ -107,6 +115,7 @@ export function renderPaymentSummary () {
     document.querySelector('.js-place-order-btn')
     .addEventListener('click', () => {
       const order =  createOrder(totalCents);
+      addItemArrivalDate(order);
       console.log(order);
       addOrder(order);
       window.location.href = 'orders.html';
