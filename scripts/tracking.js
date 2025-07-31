@@ -1,8 +1,7 @@
 import { getDeliveryOption } from "../data/deliveryOptions.js";
 import { getOrder, orders } from "../data/orders.js";
 import { getProduct } from "../data/products.js";
-import { getProductArrivalDate } from "./ordersPage.js";
-import { today } from "../data/dates.js";
+import { cart } from "../data/cart-oop.js";
 //console.log(today)
 
 const url = new URL(window.location.href);
@@ -12,11 +11,12 @@ const order = getOrder(orderId);
 const productId = url.searchParams.get('productId');
 const { orderPlacementDate } = order;
 
-const orderItem = getOrderItem();
+const orderItem = getOrderItem(productId);
 
 const product = getProduct(productId);
 const deliveryOption = getDeliveryOption(orderItem.deliveryOptionId);
 const itemArrivalDate = orderItem.deliveryDate;
+console.log(itemArrivalDate)
 
 let oM;
 let iM; 
@@ -27,6 +27,14 @@ function extract (){
     oM = exp.exec(orderPlacementDate);
 }
 extract()
+
+function updateCartQuantity () {
+    let quantity = cart.calculateCartQuantity();
+    document.querySelector('.js-cart-quantity')
+    .innerHTML = quantity;
+}
+
+updateCartQuantity();
 
 function progressBarCalculator () {
     let currentTime = new Date().getTime();
@@ -40,7 +48,7 @@ function progressBarCalculator () {
             /(deliveryTime - orderTime))*100);
 }
 
-function getOrderItem () { 
+function getOrderItem (productId) { 
     let matchingItem;
     order.orderItems.forEach( item => {
         if(productId === item.productId){
@@ -55,8 +63,7 @@ let trackingPageHTML = `
         View all orders
     </a>
     <div class="delivery-date">
-        Arriving on ${
-            getProductArrivalDate(deliveryOption.deliveryDays)}
+        Arriving on ${itemArrivalDate}
     </div>
 
     <div class="product-info">

@@ -9,6 +9,7 @@ loadProductsFetch().then(() => {
   renderProductsGrid();
 });
 */
+
 function renderProductsGrid() {
   let productsHtml = '';
 
@@ -68,7 +69,7 @@ function renderProductsGrid() {
       `
   });
 
-  function updateCartQuantity(){
+   function updateCartQuantity(){
       let quantity = cart.calculateCartQuantity();
       document.querySelector('.js-cart-quantity')
       .innerHTML = quantity;

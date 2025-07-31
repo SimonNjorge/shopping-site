@@ -144,10 +144,28 @@
   width: 140px;
   height: 36px;
   border-radius: 8px;
+  margin-top: 34px;
 
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+}
+
+.buy-again-success-msg{
+  align-items: center;
+  margin-bottom: 5px;
+  color: green;
+  position: absolute;
+  top: -34px;
+  display: flex;
+  opacity: 0;
+}
+.buy-again-success-msg img{
+  width: 24px;
+}
+.buy-again-success-msg-active{
+  opacity: 1;
 }
 
 .buy-again-icon {

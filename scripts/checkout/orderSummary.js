@@ -144,13 +144,18 @@ export function renderOrderSummary () {
             const productId = link.dataset.productId;
             document.querySelector(`.js-cart-item-container-${productId}`)
             .classList.add('is-editing-quantity');
-        updateCheckoutItems();
+            let updateInput = document.querySelector(
+                `.js-quantity-input-${productId}`);
+            updateInput.addEventListener('keydown', (event) => {
+                if (event.key == "Enter"){
+                    updateItemInCart(link)
+                }
+            })
+       // updateCheckoutItems();
         });
     });
 
-    document.querySelectorAll('.js-save-quantity-link')
-    .forEach( link => {
-    link.addEventListener('click', () => {
+    function updateItemInCart(link){
         let productId  = link.dataset.productId;
         document.querySelector(`.js-cart-item-container-${productId}`)
         .classList.remove('is-editing-quantity');
@@ -164,28 +169,13 @@ export function renderOrderSummary () {
         } else{
             updateValidationDialogue();
         } 
-     });
-    });
+    }
 
     document.querySelectorAll('.js-save-quantity-link')
-     .forEach( link => {
-     link.addEventListener('keydown', (event) => {
-        if(event.key == 'Enter'){
-            let productId  = link.dataset.productId;
-            document.querySelector(`.js-cart-item-container-${productId}`)
-            .classList.remove('is-editing-quantity');
-            let updateInput = document.querySelector(`.js-quantity-input-${productId}`);
-            let newQuantity = Number(updateInput.value);
-            if (newQuantity > 0 && newQuantity <=  1000) {
-                cart.updateCartQuantity(productId, newQuantity);
-                updateCheckoutItems();
-                renderPaymentSummary();
-                document.querySelector(`.js-quantity-label-${productId}`).innerHTML = newQuantity;
-            } else{
-                updateValidationDialogue();
-            } 
-        }  
-     });
+    .forEach( link => {
+        link.addEventListener('click', () => {
+            updateItemInCart(link)
+        });
     });
 
     document.querySelectorAll('.js-delivery-option')
