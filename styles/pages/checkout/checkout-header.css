@@ -11,6 +11,27 @@
   right: 0;
   z-index: 1000;
 }
+@media(max-width:335px){
+  .header-content{
+    flex-direction: column;
+    column-gap: 1px;
+  }
+  .checkout-header-right-section{
+    align-self: flex-end;
+  }
+  .checkout-header-left-section{
+    align-self: flex-start;
+    margin-bottom: 10px;
+    margin-top: 5px;
+  }
+  .checkout-header-middle-section{
+    font-size: small;
+  }
+  .checkout-header {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
 @media (max-width: 800px) {
   .small-site-logo{
    display: block;
@@ -96,6 +117,7 @@ a span{
 
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .return-to-home-link {

@@ -51,7 +51,7 @@
 }
 @media (max-width: 450px) {
   .progress-labels-container {
-    flex-direction: column;
+    font-size: small;
     margin-bottom: 5px;
   }
 

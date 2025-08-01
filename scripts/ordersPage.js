@@ -11,7 +11,8 @@ export function getProductArrivalDate(order, orderItem, deliveryDays){
     let date = today.add(deliveryDays, 'days');
     let arrivalDate = date.format('dddd, MMMM D'); 
     localStorage.setItem(`arrivalDate-${order.id}-${orderItem.productId}`,
-        JSON.stringify(arrivalDate))
+        JSON.stringify(arrivalDate));
+    return arrivalDate;
 }
 
 function updateCartQuantity () {
