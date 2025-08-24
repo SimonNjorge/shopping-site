@@ -16,7 +16,7 @@ const orderItem = getOrderItem(productId);
 const product = getProduct(productId);
 const deliveryOption = getDeliveryOption(orderItem.deliveryOptionId);
 const itemArrivalDate = orderItem.deliveryDate;
-console.log(itemArrivalDate)
+//console.log(itemArrivalDate)
 
 let oM;
 let iM; 

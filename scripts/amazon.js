@@ -9,11 +9,44 @@ loadProductsFetch().then(() => {
   renderProductsGrid();
 });
 */
+const searchBar = document.querySelector('.js-search-bar');
+const searchButton = document.querySelector('.js-search-btn');
+let searchQuery;
 
-function renderProductsGrid() {
-  let productsHtml = '';
+searchBar.addEventListener('input', () => {
+  searchQuery = searchBar.value;
+  searchButton.click()
+});
 
+searchButton.addEventListener('click', () => {
+  let marchingProducts = [];
+  let exp = new RegExp(searchQuery, "i");
   products.forEach(product => {
+    for(let keyword of product.keywords){
+      let match = exp.exec(keyword);
+      if (match) {
+        marchingProducts.push(product);
+        break;
+      } 
+    }
+  })
+  if(marchingProducts.length >= 1) {
+    renderProductsGrid(marchingProducts)
+  } else{
+    document.querySelector('.js-products-grid')
+      .innerHTML = `
+      <div class="product-not-found">
+        <h1>No product Found</h2>
+        <p class="check-srch-query-txt">Please check search query and try again</p>
+      </div>
+      `
+  }
+});
+
+function renderProductsGrid(allProducts) {
+  let productsHtml = '';
+  
+  allProducts.forEach(product => {
       productsHtml += `
           <div class="product-container">
             <div class="product-image-container">
@@ -69,10 +102,10 @@ function renderProductsGrid() {
       `
   });
 
-   function updateCartQuantity(){
-      let quantity = cart.calculateCartQuantity();
-      document.querySelector('.js-cart-quantity')
-      .innerHTML = quantity;
+  function updateCartQuantity(){
+    let quantity = cart.calculateCartQuantity();
+    document.querySelector('.js-cart-quantity')
+    .innerHTML = quantity;
   }
 
   updateCartQuantity();
@@ -97,4 +130,5 @@ function renderProductsGrid() {
       });
   });
 }
-renderProductsGrid();
+
+renderProductsGrid(products);

@@ -159,3 +159,12 @@
   padding: 8px;
   border-radius: 50px;
 }
+.product-not-found{
+  position: relative;
+  width: 400px;
+  top: 10vh;
+  left: 40vw;
+}
+.check-srch-query-txt{
+  color: rgb(0, 208, 255);
+}

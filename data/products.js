@@ -17,6 +17,7 @@ class Product {
     this.name = productDetails.name;
     this.rating = productDetails.rating;
     this.priceCents = productDetails.priceCents;
+    this.keywords = productDetails.keywords
   }
 
   getStarsUrl(){
@@ -42,6 +43,25 @@ class Clothing extends Product {
     return `
       <a href="${this.sizeChartLink}" target="_blank">size chart</a>
     `;
+  }
+}
+
+class Appliance extends Product {
+  constructor(productDetails){
+    super(productDetails);
+    this.instructionsLink = productDetails.instructionsLink;
+    this.warrantyLink = productDetails.warrantyLink;
+  }
+
+  extraInfoHTML(){
+    return `
+      <a href="${this.instructionsLink}" target="_blank">
+        instructions
+      </a>
+      <a href="${this.warrantyLink}" target="_blank">
+        warranty
+      </a>
+    `
   }
 }
 /*
@@ -105,7 +125,8 @@ export const products = [
     keywords: [
       "socks",
       "sports",
-      "apparel"
+      "apparel",
+      "Black and Gray Athletic Cotton Socks - 6 Pairs"
     ]
   },
   {
@@ -119,7 +140,9 @@ export const products = [
     priceCents: 2095,
     keywords: [
       "sports",
-      "basketballs"
+      "basketballs",
+      "balls",
+      "Intermediate Size Basketball"
     ]
   },
   {
@@ -134,7 +157,8 @@ export const products = [
     keywords: [
       "tshirts",
       "apparel",
-      "mens"
+      "mens",
+      "Adults Plain Cotton T-Shirt - 2 Pack"
     ],
     type: "clothing",
     sizeChartLink: "images/clothing-size-chart.png"
@@ -151,8 +175,12 @@ export const products = [
     keywords: [
       "toaster",
       "kitchen",
-      "appliances"
-    ]
+      "appliances",
+      "2 Slot Toaster - Black"
+    ],
+    type: "appliance",
+    instructionsLink: "images/appliance-instructions.png",
+    warrantyLink: "images/appliance-warranty.png"
   },
   {
     id: "3ebe75dc-64d2-4137-8860-1f5a963e534b",
@@ -166,7 +194,8 @@ export const products = [
     keywords: [
       "plates",
       "kitchen",
-      "dining"
+      "dining",
+      "6 Piece White Dinner Plate Set"
     ]
   },
   {
@@ -180,7 +209,8 @@ export const products = [
     priceCents: 3499,
     keywords: [
       "kitchen",
-      "cookware"
+      "cookware",
+      "6-Piece Nonstick, Carbon Steel Oven Bakeware Baking Set"
     ]
   },
   {
@@ -195,8 +225,11 @@ export const products = [
     keywords: [
       "hoodies",
       "sweaters",
-      "apparel"
-    ]
+      "apparel",
+      "Plain Hooded Fleece Sweatshirt"
+    ],
+    type: "clothing",
+    sizeChartLink: "images/clothing-size-chart.png"
   },
   {
     id: "77919bbe-0e56-475b-adde-4f24dfed3a04",
@@ -212,8 +245,11 @@ export const products = [
       "washroom",
       "restroom",
       "towels",
-      "bath towels"
-    ]
+      "bath towels",
+      "Luxury Towel Set - Graphite Gray"
+    ],
+    type: "clothing",
+    sizeChartLink: "images/clothing-size-chart.png"
   },
   {
     id: "3fdfe8d6-9a15-4979-b459-585b0d0545b9",
@@ -226,7 +262,8 @@ export const products = [
     priceCents: 2899,
     keywords: [
       "bathroom",
-      "cleaning"
+      "cleaning",
+      "Liquid Laundry Detergent"
     ]
   },
   {
@@ -241,7 +278,8 @@ export const products = [
     keywords: [
       "shoes",
       "running shoes",
-      "footwear"
+      "footwear",
+      "Waterproof Knit Athletic Sneakers - Gray"
     ]
   },
   {
@@ -258,7 +296,8 @@ export const products = [
       "swimsuit",
       "swimming",
       "bathing",
-      "apparel"
+      "apparel",
+      "Women's Chiffon Beachwear Cover Up - Black"
     ],
     type: "clothing",
     sizeChartLink: "images/clothing-size-chart.png"
@@ -274,7 +313,8 @@ export const products = [
     priceCents: 1560,
     keywords: [
       "accessories",
-      "shades"
+      "shades",
+      "sunglasses"
     ]
   },
   {
@@ -291,7 +331,8 @@ export const products = [
       "sandals",
       "womens",
       "beach",
-      "summer"
+      "summer",
+      "Two Strap"
     ]
   },
   {
@@ -306,7 +347,8 @@ export const products = [
     keywords: [
       "bedroom",
       "curtains",
-      "home"
+      "home",
+      "Blackout Curtains Set 4-Pack - Beige"
     ]
   },
   {
@@ -321,8 +363,11 @@ export const products = [
     keywords: [
       "shorts",
       "apparel",
-      "mens"
-    ]
+      "mens",
+      "Men's Slim-Fit Summer Shorts"
+    ],
+    type: "clothing",
+    sizeChartLink: "images/clothing-size-chart.png"
   },
   {
     id: "c2a82c5e-aff4-435f-9975-517cfaba2ece",
@@ -336,8 +381,12 @@ export const products = [
     keywords: [
       "water boiler",
       "appliances",
-      "kitchen"
-    ]
+      "kitchen",
+      "Electric Glass and Steel Hot Tea Water Kettle - 1.7-Liter"
+    ],
+    type: "appliance",
+    instructionsLink: "images/appliance-instructions.png",
+    warrantyLink: "images/appliance-warranty.png"
   },
   {
     id: "6b07d4e7-f540-454e-8a1e-363f25dbae7d",
@@ -353,7 +402,8 @@ export const products = [
       "tissues",
       "kitchen",
       "tissues box",
-      "napkins"
+      "napkins",
+      "Ultra Soft Tissue 2-Ply - 18 Box"
     ]
   },
   {
@@ -369,7 +419,8 @@ export const products = [
       "hats",
       "straw hats",
       "summer",
-      "apparel"
+      "apparel",
+      "Straw Lifeguard Sun Hat"
     ]
   },
   {
@@ -384,7 +435,9 @@ export const products = [
     keywords: [
       "jewelry",
       "accessories",
-      "womens"
+      "womens",
+      "Stud Earrings",
+      "Sterling Silver Sky Flower Stud Earrings"
     ]
   },
   {
@@ -434,7 +487,8 @@ export const products = [
       "shoes",
       "flats",
       "womens",
-      "footwear"
+      "footwear",
+      "Women's Knit Ballet Flat"
     ]
   },
   {
@@ -450,7 +504,8 @@ export const products = [
       "tshirts",
       "shirts",
       "apparel",
-      "mens"
+      "mens",
+      "Quick-Dry Golf Polo Shirt"
     ],
     type: "clothing",
     sizeChartLink: "images/clothing-size-chart.png"
@@ -468,7 +523,8 @@ export const products = [
       "garbage",
       "bins",
       "cans",
-      "kitchen"
+      "kitchen",
+      "Trash Can with Foot Pedal"
     ]
   },
   {
@@ -485,7 +541,8 @@ export const products = [
       "bed sheets",
       "sheets",
       "covers",
-      "home"
+      "home",
+      "Duvet Cover Set with Zipper Closure"
     ]
   },
   {
@@ -503,7 +560,8 @@ export const products = [
       "beanies",
       "tuques",
       "apparel",
-      "womens"
+      "womens",
+      "Chunky Cable Beanie - Gray"
     ]
   },
   {
@@ -518,8 +576,11 @@ export const products = [
     keywords: [
       "pants",
       "apparel",
-      "mens"
-    ]
+      "mens",
+      "Men's Classic-fit  Pleated Chino Pants"
+    ],
+    type: "clothing",
+    sizeChartLink: "images/clothing-size-chart.png"
   },
   {
     id: "1c079479-8586-494f-ab53-219325432536",
@@ -534,7 +595,8 @@ export const products = [
       "shoes",
       "running shoes",
       "footwear",
-      "mens"
+      "mens",
+      "Athletic Sneaker"
     ]
   },
   {
@@ -550,7 +612,8 @@ export const products = [
       "sunglasses",
       "glasses",
       "accessories",
-      "shades"
+      "shades",
+      "Men's Navigator Sunglasses Pilot"
     ]
   },
   {
@@ -564,7 +627,8 @@ export const products = [
     priceCents: 6797,
     keywords: [
       "cooking set",
-      "kitchen"
+      "kitchen",
+      "Non-Stick Cookware Set, Pots, Pans and Utensils"
     ]
   },
   {
@@ -580,7 +644,8 @@ export const products = [
       "bathroom",
       "washroom",
       "mirrors",
-      "home"
+      "home",
+      "Vanity Mirror with Heavy Base - Chrome"
     ]
   },
   {
@@ -597,8 +662,11 @@ export const products = [
       "sweatpants",
       "jogging",
       "apparel",
-      "womens"
-    ]
+      "womens",
+      "Women's Fleece Jogger Sweatpant"
+    ],
+    type: "clothing",
+    sizeChartLink: "images/clothing-size-chart.png"
   },
   {
     id: "d339adf3-e004-4c20-a120-40e8874c66cb",
@@ -611,7 +679,8 @@ export const products = [
     priceCents: 2400,
     keywords: [
       "accessories",
-      "womens"
+      "womens",
+      "Double Oval Twist French Wire Earrings - Gold"
     ]
   },
   {
@@ -626,7 +695,8 @@ export const products = [
     keywords: [
       "boxes",
       "food containers",
-      "kitchen"
+      "kitchen",
+      "Round Airtight Food Storage Containers - 5 Piece"
     ]
   },
   {
@@ -641,8 +711,12 @@ export const products = [
     keywords: [
       "coffeemakers",
       "kitchen",
-      "appliances"
-    ]
+      "appliances",
+      "Coffeemaker with Glass Carafe and Reusable Filter - 25 Oz, Black"
+    ],
+    type: "appliance",
+    instructionsLink: "images/appliance-instructions.png",
+    warrantyLink: "images/appliance-warranty.png"
   },
   {
     id: "02e3a47e-dd68-467e-9f71-8bf6f723fdae",
@@ -655,7 +729,9 @@ export const products = [
     priceCents: 3099,
     keywords: [
       "bedroom",
-      "home"
+      "home",
+      "Blackout Curtains",
+      "Blackout Curtains Set 42 x 84-Inch - Black, 2 Panels"
     ]
   },
   {
@@ -670,7 +746,9 @@ export const products = [
     keywords: [
       "bathroom",
       "home",
-      "towels"
+      "towels",
+      "Cotton Bath Towels",
+      "100% Cotton Bath Towels - 2 Pack, Light Teal"
     ]
   },
   {
@@ -686,7 +764,8 @@ export const products = [
       "shoes",
       "running shoes",
       "footwear",
-      "womens"
+      "womens",
+      "Waterproof Knit Athletic Sneakers - Pink"
     ]
   },
   {
@@ -701,8 +780,12 @@ export const products = [
     keywords: [
       "food blenders",
       "kitchen",
-      "appliances"
-    ]
+      "appliances",
+      "Countertop Blender - 64oz, 1400 Watts"
+    ],
+    type: "appliance",
+    instructionsLink: "images/appliance-instructions.png",
+    warrantyLink: "images/appliance-warranty.png"
   },
   {
     id: "36c64692-677f-4f58-b5ec-0dc2cf109e27",
@@ -717,7 +800,8 @@ export const products = [
       "mixing bowls",
       "baking",
       "cookware",
-      "kitchen"
+      "kitchen",
+      "10-Piece Mixing Bowl Set with Lids - Floral"
     ]
   },
   {
@@ -732,7 +816,8 @@ export const products = [
     keywords: [
       "kitchen",
       "kitchen towels",
-      "tissues"
+      "tissues",
+      "2-Ply Kitchen Paper Towels - 30 Pack"
     ]
   },
   {
@@ -748,12 +833,17 @@ export const products = [
       "sweaters",
       "hoodies",
       "apparel",
-      "mens"
-    ]
+      "mens",
+      "Men's Full-Zip Hooded Fleece Sweatshirt"
+    ],
+    type: "clothing",
+    sizeChartLink: "images/clothing-size-chart.png"
   }
 ].map(productDetails => {
   if(productDetails.type == 'clothing') {
     return new Clothing(productDetails);
+  } else if(productDetails.type == "appliance") {
+    return new Appliance(productDetails)
   }
   return new Product(productDetails);
 });
