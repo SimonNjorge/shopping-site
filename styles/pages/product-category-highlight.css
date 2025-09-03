@@ -1,0 +1,59 @@
+@media screen and (min-width: 500px){
+    .highlight-grid{
+        display: flex;
+        width: 100%;
+    }
+    .card{
+        width: 50%;
+    }
+}
+.highlight-grid{
+    /*display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 4px;*/
+    margin: 6px 2px;
+    border-top: 1px solid rgb(211, 211, 211);
+}
+.card{
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 1px;
+    height: 300px;
+    padding-top: 50px;
+}
+.card-item{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 145px;
+    border: 1px solid rgb(193, 193, 193);
+}
+.card-item-img-cont{
+    width: 80px;
+}
+.card-item .card-item-img-cont img{
+    width: 100%;
+}
+.card.gaming-equipment::before{
+    content: 'Level up your gaming';
+}
+.card.electronics::before{
+    content: 'Shop our reliable electronics';
+}
+.card.gaming-equipment::before,
+.card.electronics::before{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 1;
+    height: 49px;
+    width: 99%;
+    padding-left: 3px;
+    font-size: larger;
+    font-weight: bold;
+    background-color: rgb(0, 138, 217);
+    color: white;
+}
