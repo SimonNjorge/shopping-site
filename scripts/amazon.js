@@ -9,6 +9,7 @@ loadProductsFetch().then(() => {
   renderProductsGrid();
 });
 */
+const productsGrid = document.querySelector('.js-products-grid');
 const searchBar = document.querySelector('.js-search-bar');
 const searchButton = document.querySelector('.js-search-btn');
 let searchQuery;
@@ -16,6 +17,7 @@ let searchQuery;
 searchBar.addEventListener('input', () => {
   searchQuery = searchBar.value;
   searchButton.click()
+  productsGrid.scrollIntoView()
 });
 
 searchButton.addEventListener('click', () => {

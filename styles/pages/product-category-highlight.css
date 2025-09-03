@@ -21,6 +21,7 @@
     column-gap: 1px;
     height: 300px;
     padding-top: 50px;
+    padding-bottom: 40px;
 }
 .card-item{
     display: flex;
@@ -29,6 +30,17 @@
     align-items: center;
     height: 145px;
     border: 1px solid rgb(193, 193, 193);
+}
+.card-link{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    bottom: 0;
+    height: 38px;
+    padding: 5px;
+}
+.card-link:hover{
+    color: brown;
 }
 .card-item-img-cont{
     width: 80px;

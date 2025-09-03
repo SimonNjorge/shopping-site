@@ -190,3 +190,10 @@ body{
 .check-srch-query-txt{
   color: rgb(0, 208, 255);
 }
+
+footer{
+  background-color: black;
+  color: indigo;
+  text-align: center;
+  padding: 20px;
+}
