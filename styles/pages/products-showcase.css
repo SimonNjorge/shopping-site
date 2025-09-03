@@ -1,0 +1,133 @@
+
+@media screen and (max-width: 750px){
+    .slider-description{
+        height: 60px;
+    }
+    .product-showcase-slider{
+        height: 200px;
+    }
+}
+
+.product-showcase-slider{
+    width: 98vw;
+    position: relative;
+    padding-bottom: 4px;
+    margin-bottom: 4px;
+    border: 1px solid gray;
+    height: 300px;
+}
+.slider{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.slider-img-cont{
+    max-height: 300px;
+    overflow: hidden;
+}
+
+.product-showcase-slider div img{
+    width: 100%;
+}
+
+.slider-description{
+    margin: 0;
+    padding: 12px;
+    font-size: 30px;
+}
+.product-showcase-slider div a{
+    font-size: large;
+    padding: 8px 16px;
+}
+.product-showcase-slider div a:hover{
+    color: rgb(240, 57, 87);
+}
+
+.next-btn{
+    right: 0;
+}
+.prev-btn,
+.next-btn{
+    height: 44px;
+    font-size: large;
+    margin: 2px;
+    position: absolute;
+    top: 170px;
+    z-index: 4;
+    transition: .4s;
+    border: none;
+    background-color: ghostwhite;
+}
+.prev-btn:hover, 
+.next-btn:hover{
+    background-color: darkgrey;
+}
+.next .slider.other_1{
+    opacity: 0;
+}
+.next .slider.other_2,
+.next .slider.active{
+    z-index: 3;
+}
+
+.next .slider.other_2,
+.next .slider.active{
+    animation: showNext 1s ease-in-out 1 forwards;
+}
+
+@keyframes showNext {
+    from{
+        transform: translateX(var(--transform-from));
+    }
+    to{
+        transform: translateX(calc(var(--transform-from) - 100%));
+    }
+}
+.next .slider.active{
+    --transform-from: 0px;
+}
+
+.next .slider.other_2{
+    --transform-from: calc(100%);
+}
+/*
+.prev .slider.other_2{
+    z-index: 1;
+}*/
+/*.prev .slider.other_1,*/
+.prev .slider.other_2,
+.prev .slider.active{
+    z-index: 4;
+}
+
+.prev .slider.other_2,
+.prev .slider.active{
+    animation: showPrev 1s ease-in-out 1 forwards;
+}
+
+@keyframes showPrev{
+    from{
+        transform: translateX(var(--transform-from));
+    }
+    to{
+        transform: translateX(calc(var(--transform-from) + 100%));
+    }
+}
+.prev .slider.active{
+    --transform-from: calc(100% * -1);
+}
+.prev .slider.other_2{
+    --transform-from: 0px;
+}
+
+
+
+
+
+
+

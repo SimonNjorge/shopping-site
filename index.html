@@ -17,12 +17,14 @@
     <link rel="stylesheet" href="styles/shared/general.css">
     <link rel="stylesheet" href="styles/shared/amazon-header.css">
     <link rel="stylesheet" href="styles/pages/amazon.css">
+
+    <link rel="stylesheet" href="styles/pages/products-showcase.css">
   </head>
   <body>
     <div class="amazon-header">
       <div class="amazon-header-left-section">
         <div class="large-site-logo">
-           <a href="index.html" class="header-link">
+          <a href="index.html" class="header-link">
             <span class="Shopping-text">
               Shopping 
             </span>
@@ -68,11 +70,55 @@
     </div>
     
     <div class="main">
-      <div class="products-grid js-products-grid">
+      <div class="product-showcase-slider next">
+        <div class="slider other_1" style="background-color: rgb(174, 188, 186);">
+          <div class="description-cont">
+            <div class="slider-description">Grab amazing toys for your little munchkins</div>
+          </div>
+          <div class="slider-img-cont">
+            <img src="images/toys for little ones amazon.jpg" alt="toys img">
+          </div>
+          <a href="#">
+            explore more on toys
+          </a>
+        </div>  
         
+        <div class="slider active" style="background-color: rgb(255,215,0); color: rgb(56, 41, 41);">
+          <div class="description-cont">
+            <p class="slider-description">Look smarter with our fashion collections</p>
+          </div>
+          <div class="slider-img-cont">
+            <img src="images/shopfashionamazon.jpg" alt="fashion img">
+          </div>
+          <a href="#">
+            Discover more on fashion
+          </a>
+        </div>
+
+        <div class="slider other_2" style="background-color: rgb(255,182,193);">
+          <div class="description-cont">
+            <p class="slider-description">Shop kitchen essentials</p>
+          </div>
+          <div class="slider-img-cont">
+            <img src="images/kitchenessentialsamazon.jpg" alt="kitchen essentials img">
+          </div>
+          <a href="#">
+            explore more on  kitchen utilities
+          </a>
+        </div>
+
+        <button class="prev-btn">
+          <
+        </button>
+        <button class="next-btn">
+          >
+        </button>
+      </div>
+      <div class="products-grid js-products-grid">
       </div>
     </div>
     <script type="module" src="scripts/amazon.js"></script>
     <script type="module" src="data/products.js"></script>
+    <script src="scripts/slider.js"></script>
   </body>
 </html>
