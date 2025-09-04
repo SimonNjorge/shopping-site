@@ -15,6 +15,7 @@
     margin-bottom: 4px;
     border: 1px solid gray;
     height: 300px;
+    overflow: hidden;
 }
 .slider{
     position: absolute;
