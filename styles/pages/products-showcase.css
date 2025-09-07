@@ -9,13 +9,17 @@
 }
 
 .product-showcase-slider{
-    width: 98vw;
+    width: 100%;
     position: relative;
     padding-bottom: 4px;
     margin-bottom: 4px;
     border: 1px solid gray;
     height: 300px;
     overflow: hidden;
+}
+.product-showcase-slider:hover .prev-btn,
+.product-showcase-slider:hover .next-btn{
+    opacity: 1;
 }
 .slider{
     position: absolute;
@@ -70,7 +74,9 @@
     z-index: 4;
     transition: .4s;
     border: none;
-    background-color: ghostwhite;
+    background-color: transparent;
+    color: white;
+    opacity: 0;
 }
 .prev-btn:hover, 
 .next-btn:hover{
