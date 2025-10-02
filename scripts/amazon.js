@@ -34,11 +34,15 @@ searchButton.addEventListener('click', () => {
   })
   if(marchingProducts.length >= 1) {
     renderProductsGrid(marchingProducts)
+    document.querySelector('.js-no-products-info-cont')
+    .innerHTML = '';
   } else{
     document.querySelector('.js-products-grid')
+      .innerHTML = '';
+    document.querySelector('.js-no-products-info-cont')
       .innerHTML = `
       <div class="product-not-found">
-        <h1>No product Found</h2>
+        <h3>No product Found</h3>
         <p class="check-srch-query-txt">Please check search query and try again</p>
       </div>
       `
