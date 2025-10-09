@@ -3,9 +3,9 @@ let items = document.querySelectorAll('.slider');
 let nextBtn = document.querySelector('.next-btn');
 let prevBtn = document.querySelector('.prev-btn');
 
-let active = 1;
-let other_1 = 0;
-let other_2 = 2;
+let active = 2;
+let other_1 = 1;
+let other_2 = 3;
 
 function removePrevStates(){
     let activeItem = document.querySelector('.next .active');
@@ -23,6 +23,8 @@ function changeSlider(){
     }, 5000)
 
     items.forEach(item => {
+        //reseting the animations so that they
+        //refresh when we assign the new classes
         item.style.animation = 'none';
         void item.offsetHeight;
         item.style.animation = '';
