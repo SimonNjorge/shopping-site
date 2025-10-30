@@ -6,12 +6,12 @@ import { deliveryOptions, getDeliveryOption } from "../../data/deliveryOptions.j
 import { renderPaymentSummary } from "./paymentSummary.js";
 import { deliveryDateCalculator } from "../../data/dates.js";
 
-function updateValidationDialogue () {
-    let dialogueCont = document.querySelector('.js-update-validation');
+function updateValidationDialogue (productId) {
+    let dialogueCont = document.querySelector(`.js-update-validation-${productId}`);
     dialogueCont.classList.add('update-validation-on');
     setTimeout(() => {
         dialogueCont.classList.remove('update-validation-on');
-    }, 2000)
+    }, 2000);
 }
 
 function updateCheckoutItems(){
@@ -61,7 +61,7 @@ function deliveryOptionsHTML (matchingProduct, cartItem){
 
 export function renderOrderSummary () {
     let cartSummaryHTML = '';
-    cart.cartItems.forEach((cartItem) => {
+    cart.cartItems.forEach( cartItem => {
         let productId = cartItem.productId;
         const matchingProduct = getProduct(productId);
 
@@ -103,7 +103,7 @@ export function renderOrderSummary () {
                       js-del-link js-del-link-${matchingProduct.id}" data-product-id="${matchingProduct.id}">
                       Delete
                     </span>
-                    <p class="update-validation js-update-validation">
+                    <p class="update-validation js-update-validation-${matchingProduct.id}">
                       Please enter a number 1-1000
                     </p>
                 </div>
@@ -155,7 +155,7 @@ export function renderOrderSummary () {
         });
     });
 
-    function updateItemInCart(link){
+    function updateItemInCart (link) {
         let productId  = link.dataset.productId;
         document.querySelector(`.js-cart-item-container-${productId}`)
         .classList.remove('is-editing-quantity');
@@ -166,8 +166,8 @@ export function renderOrderSummary () {
             updateCheckoutItems();
             renderPaymentSummary();
             document.querySelector(`.js-quantity-label-${productId}`).innerHTML = newQuantity;
-        } else{
-            updateValidationDialogue();
+        } else {
+            updateValidationDialogue(productId);
         } 
     }
 
