@@ -50,10 +50,10 @@ function renderOrderProductsDetailsHTML (order) {
                     Quantity: ${orderItem.quantity}
                 </div>
                 <button class="buy-again-button button-primary js-buy-again-btn"
-                  data-product-id=${orderItem.productId}>
+                  data-product-id=${orderItem.productId} data-order-id=${order.id} >
                     <img class="buy-again-icon" src="images/icons/buy-again.png">
                     <span class="buy-again-message">Buy it again</span>
-                    <div class="buy-again-success-msg js-success-msg-${orderItem.productId}">
+                    <div class="buy-again-success-msg js-success-msg-${order.id}-${orderItem.productId}">
                         <img src="../images/icons/checkmark.png">
                         <p>successful, added to cart</p>
                     </div>
@@ -72,7 +72,7 @@ function renderOrderProductsDetailsHTML (order) {
     
     return orderProductsDetailsHTML;
 }
-console.log(orders);
+//console.log(orders);
 
 function orderPlacementDate (order) {
     let date = today.format('MMMM D hh[:]mm A'); 
@@ -118,19 +118,19 @@ function renderOrdersPage(){
     document.querySelector('.js-orders-grid')
      .innerHTML = ordersHTML;
     
+    let buyAgainTimeoutId;
     document.querySelectorAll('.js-buy-again-btn')
      .forEach( button => {
         button.addEventListener('click', (event) => {
-            let { productId } = button.dataset;
+            let { productId, orderId } = button.dataset;
             cart.addToCart(productId);
             updateCartQuantity();
-            let successMsg = document.querySelectorAll(`.js-success-msg-${productId}`);
-            successMsg.forEach(msg => {
-                msg.classList.add('buy-again-success-msg-active')
-                setTimeout(() => {
-                    msg.classList.remove('buy-again-success-msg-active');
-                }, 2000)
-            })
+            let successMsg = document.querySelector(`.js-success-msg-${orderId}-${productId}`);
+            successMsg.classList.add('buy-again-success-msg-active');
+            clearTimeout(buyAgainTimeoutId);
+            buyAgainTimeoutId = setTimeout(() => {
+                successMsg.classList.remove('buy-again-success-msg-active');
+            }, 2000)
         })
     })
 }
